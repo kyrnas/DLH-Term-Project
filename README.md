@@ -4,6 +4,8 @@ Source Code: https://github.com/EmmaRocheteau/TPC-LoS-prediction
 
 ## Pre-processing Instructions
 
+Per instructors request the preprocessed data can be shared via Google Drive. Preprocessing can take several hours.
+
 ### eICU
 
 1) To run the sql files you must have the eICU database set up: https://physionet.org/content/eicu-crd/2.0/. 
