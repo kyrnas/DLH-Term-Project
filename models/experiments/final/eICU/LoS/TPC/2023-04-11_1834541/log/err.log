@@ -1,0 +1,28 @@
+2023-04-11 23:51:56,509 - INFO -   File "C:\Users\Kry\anaconda3\envs\cuda\lib\site-packages\trixi\experiment\experiment.py", line 90, in run
+    self.validate(epoch=self._epoch_idx)
+
+  File "D:\Projects\CS598\DLH\DLH-Term-Project\models\experiment_template.py", line 223, in validate
+    self.test()
+
+  File "D:\Projects\CS598\DLH\DLH-Term-Project\models\experiment_template.py", line 256, in test
+    y_hat_los, y_hat_mort = self.model(padded, diagnoses, flat)
+
+  File "C:\Users\Kry\anaconda3\envs\cuda\lib\site-packages\torch\nn\modules\module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+
+  File "D:\Projects\CS598\DLH\DLH-Term-Project\models\tpc_model.py", line 618, in forward
+    diagnoses_enc = self.relu(self.main_dropout(self.bn_diagnosis_encoder(self.diagnosis_encoder(diagnoses))))  # B * diagnosis_size
+
+  File "C:\Users\Kry\anaconda3\envs\cuda\lib\site-packages\torch\nn\modules\module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+
+  File "D:\Projects\CS598\DLH\DLH-Term-Project\models\tpc_model.py", line 76, in forward
+    return F.batch_norm(
+
+  File "C:\Users\Kry\anaconda3\envs\cuda\lib\site-packages\torch\nn\functional.py", line 2448, in batch_norm
+    _verify_batch_size(input.size())
+
+  File "C:\Users\Kry\anaconda3\envs\cuda\lib\site-packages\torch\nn\functional.py", line 2416, in _verify_batch_size
+    raise ValueError("Expected more than 1 value per channel when training, got input size {}".format(size))
+
+2023-04-11 23:51:56,509 - INFO - ValueError('Expected more than 1 value per channel when training, got input size torch.Size([1, 64])')
