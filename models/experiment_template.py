@@ -101,6 +101,9 @@ class ExperimentTemplate(PytorchExperiment):
             if batch_idx > (self.no_train_batches // (100 / self.config.percentage_data)):
                 break
 
+            if batch is None:
+                break
+
             # unpack batch
             if self.config.dataset == 'MIMIC':
                 padded, mask, flat, los_labels, mort_labels, seq_lengths = batch
@@ -183,6 +186,8 @@ class ExperimentTemplate(PytorchExperiment):
             val_y_mort = np.array([])
 
             for batch in val_batches:
+                if batch is None:
+                    break
 
                 # unpack batch
                 if self.config.dataset == 'MIMIC':
@@ -245,6 +250,9 @@ class ExperimentTemplate(PytorchExperiment):
         test_y_mort = np.array([])
 
         for batch in test_batches:
+
+            if batch is None:
+                break
 
             # unpack batch
             if self.config.dataset == 'MIMIC':

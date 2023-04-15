@@ -77,6 +77,8 @@ class eICUReader(object):
             ts_patient = groupby(map(self.line_split, timeseries_file), key=lambda line: line[0])
             # we loop through these batches, tracking the index because we need it to index the pandas dataframes
             for i, batch in enumerate(patient_batches):
+                if len(batch) != batch_size:
+                    return None
                 ts_batch = [[line[1:] for line in ts] for _, ts in islice(ts_patient, batch_size)]
                 padded, mask, seq_lengths = self.pad_sequences(ts_batch)
                 los_labels = self.get_los_labels(torch.tensor(self.labels.iloc[i*batch_size:(i+1)*batch_size,7].values, device=self._device).type(self._dtype), padded[:,0,:], mask)
