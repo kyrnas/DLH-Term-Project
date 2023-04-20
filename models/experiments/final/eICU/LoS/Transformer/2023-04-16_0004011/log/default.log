@@ -1,0 +1,109 @@
+2023-04-16 00:04:01,718 - INFO - Config:
+2023-04-16 00:04:01,719 - INFO - {
+    "L2_regularisation": 0,
+    "alpha": 100,
+    "base_dir": "models/experiments/final/eICU/LoS/Transformer",
+    "batch_norm": "mybatchnorm",
+    "batch_size": 32,
+    "batch_size_test": 32,
+    "batchnorm": "mybatchnorm",
+    "d_model": 16,
+    "dataset": "eICU",
+    "diagnosis_size": 64,
+    "disable_cuda": false,
+    "exp_name": "Transformer",
+    "feedforward_size": 256,
+    "intermediate_reporting": false,
+    "labs_only": false,
+    "last_linear_size": 17,
+    "learning_rate": 0.00017,
+    "loss": "msle",
+    "main_dropout_rate": 0.45,
+    "mode": "test",
+    "model_type": "tpc",
+    "n_epochs": 15,
+    "n_heads": 2,
+    "n_layers": 6,
+    "name": "Transformer",
+    "no_diag": false,
+    "no_exp": false,
+    "no_labs": false,
+    "no_mask": false,
+    "percentage_data": 100.0,
+    "positional_encoding": false,
+    "save_results_csv": false,
+    "seed": 1581330307,
+    "shuffle_train": false,
+    "sum_losses": true,
+    "task": "LoS",
+    "trans_dropout_rate": 0
+}
+2023-04-16 00:04:04,134 - INFO - Experiment set up.
+2023-04-16 00:04:04,245 - INFO - Transformer(
+  (relu): ReLU()
+  (sigmoid): Sigmoid()
+  (hardtanh): Hardtanh(min_val=0.020833333333333332, max_val=100)
+  (trans_dropout): Dropout(p=0, inplace=False)
+  (main_dropout): Dropout(p=0.45, inplace=False)
+  (msle_loss): MSLELoss(
+    (squared_error): MSELoss()
+  )
+  (mse_loss): MSELoss(
+    (squared_error): MSELoss()
+  )
+  (bce_loss): BCELoss()
+  (empty_module): EmptyModule()
+  (transformer): TransformerEncoder(
+    (input_embedding): Conv1d(176, 16, kernel_size=(1,), stride=(1,))
+    (pos_encoder): PositionalEncoding()
+    (trans_encoder_layer): TransformerEncoderLayer(
+      (self_attn): MultiheadAttention(
+        (out_proj): NonDynamicallyQuantizableLinear(in_features=16, out_features=16, bias=True)
+      )
+      (linear1): Linear(in_features=16, out_features=256, bias=True)
+      (dropout): Dropout(p=0, inplace=False)
+      (linear2): Linear(in_features=256, out_features=16, bias=True)
+      (norm1): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+      (norm2): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (transformer_encoder): TransformerEncoder(
+      (layers): ModuleList(
+        (0-5): 6 x TransformerEncoderLayer(
+          (self_attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=16, out_features=16, bias=True)
+          )
+          (linear1): Linear(in_features=16, out_features=256, bias=True)
+          (dropout): Dropout(p=0, inplace=False)
+          (linear2): Linear(in_features=256, out_features=16, bias=True)
+          (norm1): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+          (norm2): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+          (dropout1): Dropout(p=0, inplace=False)
+          (dropout2): Dropout(p=0, inplace=False)
+        )
+      )
+    )
+  )
+  (diagnosis_encoder): Linear(in_features=293, out_features=64, bias=True)
+  (bn_diagnosis_encoder): MyBatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (point_los): Linear(in_features=145, out_features=17, bias=True)
+  (point_mort): Linear(in_features=145, out_features=17, bias=True)
+  (bn_point_last_los): MyBatchNorm1d(17, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (bn_point_last_mort): MyBatchNorm1d(17, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (point_final_los): Linear(in_features=17, out_features=1, bias=True)
+  (point_final_mort): Linear(in_features=17, out_features=1, bias=True)
+)
+2023-04-16 05:10:45,364 - INFO - Custom bins confusion matrix:
+2023-04-16 05:10:45,364 - INFO - [[224803 166650  31991  12149   6117   3045   1407    503    466      1]
+ [ 79420 116589  34551  17925   8777   4291   1928    749    601      0]
+ [ 31016  67114  27930  17306   9547   4962   2191    967    654      1]
+ [ 14392  38943  20170  14336   9436   5325   2506   1186    945      3]
+ [  7409  23963  14189  11597   8271   5284   2672   1228   1038      7]
+ [  4025  15348  10261   8868   7236   4543   2662   1310   1031     11]
+ [  2313  10110   7767   6941   6183   3914   2588   1437   1100     14]
+ [  1497   6954   5989   5360   5520   3396   2402   1220   1049      3]
+ [  3765  16492  16248  17415  17993  13918   8803   6102   5538    155]
+ [  1552   7073   8821  11532  11145  10419   8828   6041   6572    409]]
+2023-04-16 05:10:46,763 - INFO - Test Loss: 88.2094
+2023-04-16 05:10:46,778 - INFO - Experiment ended. Checkpoints stored =)

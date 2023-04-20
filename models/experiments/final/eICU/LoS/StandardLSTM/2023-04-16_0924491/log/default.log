@@ -1,0 +1,77 @@
+2023-04-16 09:24:49,334 - INFO - Config:
+2023-04-16 09:24:49,334 - INFO - {
+    "L2_regularisation": 0,
+    "alpha": 100,
+    "base_dir": "models/experiments/final/eICU/LoS/StandardLSTM",
+    "batch_norm": "mybatchnorm",
+    "batch_size": 512,
+    "batch_size_test": 32,
+    "batchnorm": "mybatchnorm",
+    "bidirectional": false,
+    "channelwise": false,
+    "dataset": "eICU",
+    "diagnosis_size": 64,
+    "disable_cuda": false,
+    "exp_name": "StandardLSTM",
+    "hidden_size": 128,
+    "intermediate_reporting": false,
+    "labs_only": false,
+    "last_linear_size": 17,
+    "learning_rate": 0.00129,
+    "loss": "msle",
+    "lstm_dropout_rate": 0.2,
+    "main_dropout_rate": 0.45,
+    "mode": "test",
+    "model_type": "tpc",
+    "n_epochs": 8,
+    "n_layers": 2,
+    "name": "StandardLSTM",
+    "no_diag": false,
+    "no_exp": false,
+    "no_labs": false,
+    "no_mask": false,
+    "percentage_data": 100.0,
+    "save_results_csv": false,
+    "seed": 1781264340,
+    "shuffle_train": false,
+    "sum_losses": true,
+    "task": "LoS"
+}
+2023-04-16 09:24:51,463 - INFO - Experiment set up.
+2023-04-16 09:24:53,036 - INFO - BaseLSTM(
+  (relu): ReLU()
+  (sigmoid): Sigmoid()
+  (hardtanh): Hardtanh(min_val=0.020833333333333332, max_val=100)
+  (lstm_dropout): Dropout(p=0.2, inplace=False)
+  (main_dropout): Dropout(p=0.45, inplace=False)
+  (msle_loss): MSLELoss(
+    (squared_error): MSELoss()
+  )
+  (mse_loss): MSELoss(
+    (squared_error): MSELoss()
+  )
+  (bce_loss): BCELoss()
+  (empty_module): EmptyModule()
+  (lstm): LSTM(176, 128, num_layers=2, dropout=0.2)
+  (diagnosis_encoder): Linear(in_features=293, out_features=64, bias=True)
+  (bn_diagnosis_encoder): MyBatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (point_los): Linear(in_features=257, out_features=17, bias=True)
+  (point_mort): Linear(in_features=257, out_features=17, bias=True)
+  (bn_point_last_los): MyBatchNorm1d(17, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (bn_point_last_mort): MyBatchNorm1d(17, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (point_final_los): Linear(in_features=17, out_features=1, bias=True)
+  (point_final_mort): Linear(in_features=17, out_features=1, bias=True)
+)
+2023-04-16 11:49:06,063 - INFO - Custom bins confusion matrix:
+2023-04-16 11:49:06,064 - INFO - [[227664 158141  33795  13630   7178   3407   1738    868    704      7]
+ [ 82296 106472  36682  18915  10403   5749   2390    961    961      2]
+ [ 33717  59617  28319  18332  11156   6030   2516   1270    731      0]
+ [ 15934  34841  20005  15351  10563   5628   2633   1380    898      9]
+ [  8469  20573  14813  12575   9403   5053   2629   1304    824     15]
+ [  4992  13169  10422  10146   7859   4270   2378   1310    746      3]
+ [  3097   8548   7823   8104   6852   3932   2323   1056    626      6]
+ [  2123   6146   6049   6592   5783   3491   1851    836    518      1]
+ [  5206  16889  18523  21945  18310  12418   6895   3871   2372      0]
+ [  2461   8574  10506  13446  12205  10184   7619   4233   3164      0]]
+2023-04-16 11:49:07,472 - INFO - Test Loss: 91.7601
+2023-04-16 11:49:07,484 - INFO - Experiment ended. Checkpoints stored =)
