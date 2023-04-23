@@ -10,7 +10,6 @@ if __name__=='__main__':
     c['exp_name'] = 'TPC'
     c['dataset'] = 'eICU'
     c = best_tpc(c)
-    c['n_layers'] = 3
 
     log_folder_path = create_folder('models/experiments/final/eICU/LoS', c.exp_name)
     tpc = TPC(config=c,

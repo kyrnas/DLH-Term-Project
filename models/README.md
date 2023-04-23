@@ -34,3 +34,44 @@ Running the models
     ```
     python3 -m models.final_experiment_scripts.eICU.LoS.tpc
     ```
+
+3) We ran the following experiments using an anaconda environment:
+
+   TPC Length of Stay
+    ```
+    python -m models.final_experiment_scripts.eICU.LoS.tpc
+    ```
+   
+   TPC LoS with MSE loss 
+    ```
+    python -m models.final_experiment_scripts.eICU.LoS.tpc --loss mse
+    ```
+   
+   TPC with multitask
+    ```
+    python -m models.final_experiment_scripts.eICU.multitask.tpc
+    ```
+   
+   TPC LoS with 6 layers
+    ```
+    python -m models.final_experiment_scripts.eICU.LoS.tpc --n_layers 6
+    ```
+   
+   TPC LoS with 3 layers
+    ```
+    python -m models.final_experiment_scripts.eICU.LoS.tpc --n_layers 3
+    ```
+   
+   LSTM LoS
+    ```
+    python -m models.final_experiment_scripts.eICU.LoS.standard_lstm
+    ```
+   
+   Transformer LoS
+    ```
+    python -m models.final_experiment_scripts.eICU.LoS.transformer
+    ```
+   
+ ## Run results
+ To view the run results navigate to the `models/experiments/final` folder. Choose the `eICU` foler to browse the training results or the `final` folder to 
+ browse the testing results. 
