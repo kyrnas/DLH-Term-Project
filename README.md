@@ -2,9 +2,26 @@
 
 Source Code: https://github.com/EmmaRocheteau/TPC-LoS-prediction
 
+## Environment
+
+We have included a `requirements.txt` file that the users can use to install dependencies.
+Note that this will install the CPU version of the PyTorch library.
+
+```
+pip install -r requirements.txt
+```
+
+Alternatively use an anaconda environment.yml file. We tried to include the CUDA 
+version of the library in our environment file, however the installation process is
+a lot more complicated for that version, and changes on per hardware/software basis.
+
+```
+conda env create --prefix ./env --file environment.yml
+```
+
 ## Pre-processing Instructions
 
-Per instructors request the preprocessed data can be shared via Google Drive. Preprocessing can take several hours.
+If requested the preprocessed data can be shared via Google Drive. Preprocessing can take several hours.
 
 ### eICU
 
