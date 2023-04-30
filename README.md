@@ -1,6 +1,7 @@
 # DLH-Term-Project - Group 71 - Temporal Pointwise Convolutional Networks for Length of Stay Prediction in the Intensive Care Unit
 
 Source Code: https://github.com/EmmaRocheteau/TPC-LoS-prediction
+Original Paper: https://dl.acm.org/doi/10.1145/3450439.3451860
 
 ## Environment
 
